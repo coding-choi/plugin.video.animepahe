@@ -186,7 +186,7 @@ def xbmc_add_player_item(name, url, iconimage='', description='', draw_cm=None):
 
     liz=xbmcgui.ListItem(name, iconImage="DefaultVideo.png", thumbnailImage=iconimage)
     liz.setInfo('video', infoLabels={ "Title": name, "Plot": description })
-    liz.setProperty("fanart_image", __settings__.getAddonInfo('path') + "/fanart.jpg")
+    liz.setProperty("fanart_image", iconimage)
     liz.setProperty("Video", "true")
     liz.setProperty("IsPlayable", "true")
     liz.addContextMenuItems(cm, replaceItems=False)
