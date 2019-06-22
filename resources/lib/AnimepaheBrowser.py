@@ -3,7 +3,9 @@ import math
 import itertools
 import json
 from ui import utils
+from resources.lib.ui import control
 from ui.BrowserBase import BrowserBase
+
 
 class AnimepaheBrowser(BrowserBase):
     _BASE_URL = "https://animepahe.com/api"
@@ -112,7 +114,7 @@ class AnimepaheBrowser(BrowserBase):
         data = {
             "m": 'release',
             "id": anime_id,
-            "sort": 'episode_desc',
+            "sort": 'episode_asc' if 'Ascending' in control.getSetting('reverseorder') else 'episode_desc',
             "page": page,
         }
         url = self._BASE_URL
