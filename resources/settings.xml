@@ -14,6 +14,9 @@
 		<setting id="sep"/>
 		<setting id="viewtype.bool" label="Force view types" type="bool" default="false"/>
 		<setting id="viewtype.episode" type="select" label="- Episode view" values='Default|Poster|Icon Wall|Shift|Info Wall|Wide List|Wall|Banner|Fanart' default="Default" visible="eq(-1,true)"/>
+		
+		<setting type="lsep" label="Autoplay"/>
+		<setting id="autoplay" label="Automatically play first result" type="bool" default="false"/>
 	</category>
 	<category label="Tools">
 		<setting id="tools.clear.cache" type="action" label="Click to Clear Cache..." option="close" action="RunPlugin(plugin://plugin.video.animepahe/clear_cache)"/>
