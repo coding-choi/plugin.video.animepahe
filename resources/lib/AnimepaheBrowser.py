@@ -12,9 +12,10 @@ class AnimepaheBrowser(BrowserBase):
 
     def _parse_anime_view(self, res):
         url = res['id']
+        session = res['session']
         name = "%s Ep. %s"  % (res['anime_title'], res['episode'])
         image = res['snapshot']
-        return utils.allocate_item(name, "play/" + str(url), False, image)
+        return utils.allocate_item(name, "play/" + str(url)+"_"+str(session), False, image)
 
     def _parse_search_view(self, res):
         url = res['id']
@@ -25,9 +26,10 @@ class AnimepaheBrowser(BrowserBase):
 
     def _parse_episode_view(self, res):
         url = res['id']
+        session = res['session']
         name = 'Ep. %s' % res['episode']
         image = res['snapshot']
-        return utils.allocate_item(name, "play/" + str(url), False, image)
+        return utils.allocate_item(name, "play/" +  str(url)+"_"+str(session), False, image)
 
     def _parse_history_view(self, res):
         name = res
@@ -120,10 +122,12 @@ class AnimepaheBrowser(BrowserBase):
         url = self._BASE_URL
         return self._process_episode_view(url, data, "animes_page/%s/%%d" % anime_id, page)
 
-    def get_episode_sources(self, ep_id):
+    def get_episode_sources(self, ep_id, session):
+        # New Animepahe session implemented
         data = {
             "m": 'embed',
             "id": ep_id,
+            "session": session,
             "p": 'kwik',
         }
         json_resp = self._json_request(self._BASE_URL, data)
