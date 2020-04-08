@@ -15,7 +15,7 @@ class AnimepaheBrowser(BrowserBase):
         session = res['session']
         name = "%s Ep. %s"  % (res['anime_title'], res['episode'])
         image = res['snapshot']
-        return utils.allocate_item(name, "play/" + str(url)+"_"+str(session), False, image)
+        return utils.allocate_item(name, "play/" + str(url)+"?session="+str(session), False, image)
 
     def _parse_search_view(self, res):
         url = res['id']
@@ -29,7 +29,7 @@ class AnimepaheBrowser(BrowserBase):
         session = res['session']
         name = 'Ep. %s' % res['episode']
         image = res['snapshot']
-        return utils.allocate_item(name, "play/" +  str(url)+"_"+str(session), False, image)
+        return utils.allocate_item(name, "play/" +  str(url)+"?session="+str(session), False, image)
 
     def _parse_history_view(self, res):
         name = res

@@ -161,9 +161,8 @@ def SEARCH_PAGES(payload, params):
 
 @route('play/*')
 def PLAY(payload, params):
-    ep_id = payload.split("_")[0]
-    session = payload.split("_")[1]
-    sources = _BROWSER.get_episode_sources(ep_id, session)
+    ep_id = payload
+    sources = _BROWSER.get_episode_sources(ep_id, params['session'])
     autoplay = True if 'true' in control.getSetting('autoplay') else False
 
     s = SourcesList(sorted(sources.items()), autoplay, sortResultsByRes, {
