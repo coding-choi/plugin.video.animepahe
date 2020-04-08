@@ -44,7 +44,9 @@ class AnimepaheBrowser(BrowserBase):
         return [utils.allocate_item(name, base_url % next_page, True, None)]
 
     def _json_request(self, url, data):
-        response = json.loads(self._get_request(url, data))
+        basicResp = self._get_request(url, data)
+        print(basicResp)
+        response = json.loads(basicResp)
         return response
 
     def _process_anime_view(self, url, data, base_plugin_url, page):
